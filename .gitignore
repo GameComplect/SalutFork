@@ -6,6 +6,7 @@ Resources/Textures/ASalut
 Resources/Locale/ru-RU/ASalut
 Resources/Prototypes/ASalut
 Resources/Prototypes/Roles
+Resources/Prototypes/Maps
 
 # User-specific files
 *.suo
