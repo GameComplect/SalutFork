@@ -20,6 +20,8 @@ Resources/Prototypes/Maps
 # Secret
 Resources/Prototypes/CorvaxSecrets
 Resources/Prototypes/CorvaxSecretsServer
+Resources/Textures/CorvaxSecrets
+Resources/Locale/ru-RU/corvax-secrets
 
 # Build results
 [Dd]ebug/
