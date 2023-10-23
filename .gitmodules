@@ -4,7 +4,7 @@
 	branch = master
 [submodule "Secrets"]
 	path = Secrets
-	url = git@gitlab.com:Morbo/corvax-secrets.git
+	url = git@github.com:corvax-project/secrets.git
 	branch = master
 	update = none
 [submodule "SalutResourses"]
