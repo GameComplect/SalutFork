@@ -5,12 +5,18 @@ ui-options-tab-graphics = Графика
 ui-options-tab-controls = Управление
 ui-options-tab-audio = Аудио
 ui-options-tab-network = Сеть
+ui-options-tab-misc = General
 ui-options-apply = Применить
 ui-options-reset-all = Сбросить всё
 ui-options-default = По-умолчанию
 
 ## Audio menu
 
+ui-options-discordrich = Enable Discord Rich Presence
+ui-options-general-discord = Discord
+ui-options-general-cursor = Cursor
+ui-options-general-speech = Speech
+ui-options-general-storage = Storage
 ui-options-master-volume = Основная громкость:
 ui-options-midi-volume = Громкость MIDI (Муз. инструменты):
 ui-options-ambient-music-volume = Громкость музыки окружения:
@@ -49,12 +55,12 @@ ui-options-scale-175 = 175%
 ui-options-scale-200 = 200%
 ui-options-hud-theme = Тема HUD:
 ui-options-hud-theme-default = По умолчанию
-ui-options-hud-theme-plasmafire = Plasmafire
-ui-options-hud-theme-slimecore = Slimecore
-ui-options-hud-theme-clockwork = Clockwork
-ui-options-hud-theme-retro = Retro
-ui-options-hud-theme-minimalist = Minimalist
-ui-options-hud-theme-eris = Eris
+ui-options-hud-theme-plasmafire = Плазма
+ui-options-hud-theme-slimecore = Слаймоядро
+ui-options-hud-theme-clockwork = Механизм
+ui-options-hud-theme-retro = Ретро
+ui-options-hud-theme-minimalist = Минимализм
+ui-options-hud-theme-eris = Эрис
 ui-options-vp-stretch = Растянуть изображение для соответствия окну игры
 ui-options-vp-scale = Фиксированный масштаб окна игры: x{ $scale }
 ui-options-vp-integer-scaling = Использовать целочисленное масштабирование (может вызывать появление чёрных полос/обрезания)
