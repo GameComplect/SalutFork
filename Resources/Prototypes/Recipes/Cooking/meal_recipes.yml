@@ -314,6 +314,14 @@
     FoodBreadBun: 1
     FoodMeatXeno: 1
 
+- type: microwaveMealRecipe
+  id: RecipeMothRoachburger
+  name: mothroachburger recipe
+  result: FoodBurgerMothRoach
+  solids:
+    FoodBreadBun: 1
+    MobMothroach: 1
+
 #Breads & Sandwiches
 
 - type: microwaveMealRecipe
@@ -1049,7 +1057,7 @@
 
 - type: microwaveMealRecipe
   id: RecipeCubanCarp
-  name: cuban carp recipe
+  name: Cuban carp recipe
   result: FoodMealCubancarp
   time: 15
   solids:
