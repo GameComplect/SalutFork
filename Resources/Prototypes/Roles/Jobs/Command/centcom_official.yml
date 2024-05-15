@@ -3,7 +3,21 @@
   name: job-name-centcomoff
   description: job-description-centcomoff
   playTimeTracker: JobCentralCommandOfficial
-  setPreference: false
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 36000 #20 hrs # Corvax-RoleTime
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 36000 #20 hrs # Corvax-RoleTime
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 36000 #20 hrs # Corvax-RoleTime
+    - !type:DepartmentTimeRequirement
+      department: Command
+      time: 18000 # 15 hours
+    - !type:OverallPlaytimeRequirement
+      time: 72000 #140 hrs # Corvax-RoleTime
   startingGear: CentcomGear
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-centcom # Corvax-JobSupervisors

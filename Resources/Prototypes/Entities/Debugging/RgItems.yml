@@ -1,0 +1,565 @@
+- type: itemSize
+  id: rgnomus
+  weight: 100
+  name: Хз просто прикол с размером
+  defaultShape:
+  - 0,0,10,10
+- type: entity
+  parent: [Clothing, ContentsExplosionResistanceBase]
+  id: DebugRG2
+  name: Мешочек ргшки
+  suffix: РГ
+  description: Мешочек ргшки
+  components:
+  - type: Sprite
+    sprite: Clothing/Back/Satchels/chemistry.rsi
+    state: icon
+  - type: Item
+    size: rgnomus
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+  - type: Storage
+    grid:
+    - 0,0,15,15
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: UserInterface
+    interfaces:
+    - key: enum.StorageUiKey.Key
+      type: StorageBoundUserInterface
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+- type: entity
+  id: StorageImplanterRG
+  name: ИМПЛАНТ РГШКИ
+  suffix: РГ
+  description: Очень дизбаланый
+  parent: BaseImplantOnlyImplanter
+  components:
+    - type: Implanter
+      implant: StorageImplantRG
+- type: entity
+  parent: BaseSubdermalImplant
+  id: StorageImplantRG
+  name: ИМПЛАНТ РГШКИ
+  description: Очень дизбаланый
+  noSpawn: true
+  components:
+    - type: SubdermalImplant
+      implantAction: OpenStorageImplant
+    - type: Item
+      size: rgnomus
+    - type: Storage
+      grid:
+      - 0,0,10,10
+    - type: ContainerContainer
+      containers:
+        storagebase: !type:Container
+          ents: [ ]
+    - type: UserInterface
+      interfaces:
+        - key: enum.StorageUiKey.Key
+          type: StorageBoundUserInterface
+- type: entity
+  parent: ClothingOuterHardsuitBase
+  id: ClothingOuterHardsuitRG
+  name: Скафандр Ргшки
+  suffix: РГ
+  description: Чего тут обьяснять?
+  components:
+  - type: Sprite
+    sprite: ASalut/Clothing/deathsquad.rsi
+  - type: Clothing
+    sprite: ASalut/Clothing/deathsquad.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.01
+    lowPressureMultiplier: 100000
+  - type: ClothingSpeedModifier
+    walkModifier: 1.25
+    sprintModifier: 1.25
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.05 #best armor in the game
+        Slash: 0.05
+        Piercing: 0.1
+        Heat: 0.0
+        Radiation: 0.0
+  - type: ExplosionResistance
+    damageCoefficient: 0.05
+  - type: TemperatureProtection
+    coefficient: 0.00001
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitDeathsquadRG
+- type: entity
+  parent: ClothingHeadHardsuitWithLightBase  # Corvax-Resprite
+  id: ClothingHeadHelmetHardsuitDeathsquadRG
+  noSpawn: true
+  name: deadmaywhat
+  description: 124jhrge
+  components:
+  - type: Sprite
+    sprite: ASalut/Clothing/Head/deathsquad.rsi
+  - type: Clothing
+    sprite: ASalut/Clothing/Head/deathsquad.rsi
+  - type: PointLight  # Corvax-Resprite
+    color: "#48ff00"
+    radius: 6
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesRG
+  name: Перчатки Ргшки
+  suffix: РГ
+  description: Лол это читы.
+  components:
+  - type: Sprite
+    sprite: Clothing/Hands/Gloves/combat.rsi # Corvax-Resprite
+  - type: Clothing
+    sprite: Clothing/Hands/Gloves/combat.rsi # Corvax-Resprite
+  - type: StaminaDamageOnHit
+    damage: 100 #Stam damage values seem a bit higher than regular damage because of the decay, etc
+    # This needs to be moved to boxinggloves
+    #knockdownSound: /Audio/Weapons/boxingbell.ogg
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 30
+    attackRate: 0.9
+  - type: GloveHeatResistance
+    heatResistance: 30000
+  - type: Insulated
+  - type: Fiber
+    fiberMaterial: fibers-insulative
+    fiberColor: fibers-black
+  - type: FingerprintMask
+  - type: Thieving
+    stripTimeReduction: 0.3
+    stealthy: true
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesGlassesRG
+  name: Очечки РГШКИ
+  suffix: РГ
+  description: Нахуя?
+  components:
+  - type: Sprite
+    sprite: Clothing/Eyes/Glasses/meson.rsi
+  - type: Clothing
+    sprite: Clothing/Eyes/Glasses/meson.rsi
+  - type: EyeProtection
+  - type: FlashImmunity
+  - type: IdentityBlocker
+- type: entity
+  parent: ClothingMaskGas
+  id: ClothingMaskGasRG
+  name: Маска Ргшки
+  suffix: РГ
+  components:
+  - type: Sprite
+    sprite: ASalut/Clothing/Mask/atmosian.rsi
+  - type: Clothing
+    sprite: ASalut/Clothing/Mask/atmosian.rsi
+  - type: VoiceMasker
+  - type: IngestionBlocker
+    protection: 0.50
+  - type: FlashImmunity
+  - type: EyeProtection
+- type: entity
+  parent: IDCardStandard
+  id: RGIDCard
+  suffix: РГ
+  name: Карта ргшки
+  components:
+  - type: Emag
+    maxCharges: 999
+    charges: 999
+    rechargeDuration: 1
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idpassenger
+  - type: PresetIdCard
+    job: Captain
+  - type: AgentIDCard
+  - type: ActivatableUI
+    key: enum.AgentIDCardUiKey.Key
+  - type: UserInterface
+    interfaces:
+      - key: enum.AgentIDCardUiKey.Key
+        type: AgentIDCardBoundUserInterface
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyRG1
+  suffix: РГ
+  name: Специальный ключ Ргшки
+  description: У этой штуки все каналы
+  components:
+  - type: EncryptionKey
+    channels:
+    - Common
+    - Command
+    - CentCom
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
+    - Syndicate
+    defaultChannel: Common
+- type: entity
+  id: SpellbookRG
+  suffix: РГ
+  name: Книга магии ргшки
+  parent: BaseSpellbook
+  components:
+    - type: Spellbook
+      instantSpells:
+        ForceWall: -1
+        FlashRune: -1
+        ExplosionRune: -1
+        IgniteRune: -1
+        StunRune: -1
+        Knock: -1
+      worldSpells:
+        SpawnMagicarpSpell: -1
+        Blink: -1
+        Fireball: -1
+      entitySpells:
+        Smite: -1
+- type: entity
+  name: Нож Ргшки
+  parent: BaseKnife
+  id: CombatKnifeRG
+  suffix: РГ
+  description: Это твоя мгновенная смерть
+  components:
+  - type: Tag
+    tags:
+    - CombatKnife
+    - Knife
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/combat_knife.rsi
+    size: 2
+    state: icon
+  - type: MeleeWeapon
+    attackRate: 3
+    damage:
+      types:
+        Slash: 60
+  - type: Item
+    size: 10
+    sprite: Objects/Weapons/Melee/combat_knife.rsi
+  - type: DisarmMalus
+    malus: 0.225
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: ClothingBeltHolsterRG
+  suffix: РГ
+  name: Кобура произвоства Ргшки
+  description: 'Очень крутая блюспейс технология'
+  components:
+  - type: Sprite
+    sprite: Clothing/Belt/holster.rsi
+  - type: Clothing
+    sprite: Clothing/Belt/holster.rsi
+  - type: Storage
+    grid:
+    - 0,0,10,10
+- type: entity
+  id: ClothingBeltHolsterRGFilled
+  parent: ClothingBeltHolsterRG
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: PowerDrill
+      - id: JawsOfLife
+      - id: WelderExperimental
+      - id: Multitool
+      - id: CableApcStack
+      - id: GrenadeFlashBang
+      - id: Stunbaton
+      - id: Handcuffs
+      - id: CaptainSabre
+      - id: RPED
+      - id: MedkitCombatFilled
+      - id: OmnizineChemistryBottle
+        amount: 1
+      - id: Hypopen
+      - id: EphedrineChemistryBottle
+        amount: 2
+      - id: CombatKnifeRG
+- type: entity
+  parent: GeneratorBasic
+  id: GeneratorBasicRG
+  name: Портативный Генератор Случайных Сингулярностей
+  description: 'Опастно!!!'
+  placement:
+    mode: SnapgridCenter
+  suffix: РГ
+  components:
+  - type: PowerSupplier
+    supplyRate: 500000000
+  - type: SingularityGenerator
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Anchorable
+  - type: Pullable
+  - type: GuideHelp
+    guides: [ Singularity, Power ]
+#- type: entity # Пытался сделать передвигаемый не получилось слишком тупой - Рг
+#  id: AtmosDeviceFanTinyTestedit
+#  name: Вентилятор тест
+#  description: Redacted
+#  suffix: РГ
+#  placement:
+#    mode: SnapgridCenter
+#  components:
+#  - type: SubFloorHide
+#    blockInteractions: false
+#    blockAmbience: false
+#  - type: Construction
+#  - type: Physics
+#    bodyType: Static
+#  - type: Sprite
+#    sprite: Structures/Piping/Atmospherics/tinyfan.rsi
+#    state: icon
+#    netsync: false
+#  - type: Fixtures
+#    fixtures:
+#    - shape:
+#        !type:PhysShapeAabb
+#          bounds: "-0.5,-0.5,0.5,0.5"
+#  - type: Airtight
+#    noAirWhenFullyAirBlocked: false
+#  - type: Clickable
+- type: entity
+  name: Обезьяна Полубог
+  id: MobMonkeyrg
+  parent: MobMonkey
+  description:
+  suffix: РГ
+  components:
+  - type: CombatMode
+    disarm: null
+  - type: NameIdentifier
+    group: Monkey
+  - type: SentienceTarget
+    flavorKind: station-event-random-sentience-flavor-primate
+  - type: Inventory
+    templateId: Monkeyrg
+  - type: Strippable
+  - type: UserInterface
+    interfaces:
+    - key: enum.StrippingUiKey.Key
+      type: StrippableBoundUserInterface
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: monkey
+      sprite: Mobs/Animals/monkey.rsi
+  - type: Hands
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1000: Critical
+      10000: Dead
+  - type: Body
+    prototype: Human
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: monkey
+      Critical:
+        Base: dead
+      Dead:
+        Base: dead
+  - type: Appearance
+  - type: FireVisuals
+    sprite: Mobs/Effects/onfire.rsi
+    normalState: Monkey_burning
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeat
+      amount: 6
+  - type: MonkeyAccent
+  - type: Speech
+  - type: Puller
+  - type: CanHostGuardian
+- type: inventoryTemplate
+  id: Monkeyrg
+  slots:
+    - name: outerClothing
+      slotTexture: suit
+      slotFlags: OUTERCLOTHING
+      slotGroup: MainHotbar
+      stripTime: 6
+      uiWindowPos: 1,2
+      strippingWindowPos: 1,2
+      displayName: Suit
+    - name: gloves
+      slotTexture: gloves
+      slotFlags: GLOVES
+      uiWindowPos: 2,2
+      strippingWindowPos: 2,2
+      displayName: Gloves
+    - name: neck
+      slotTexture: neck
+      slotFlags: NECK
+      uiWindowPos: 0,1
+      strippingWindowPos: 0,1
+      displayName: Neck
+    - name: mask
+      slotTexture: mask
+      slotFlags: MASK
+      uiWindowPos: 1,1
+      strippingWindowPos: 1,1
+      displayName: Mask
+    - name: eyes
+      slotTexture: glasses
+      slotFlags: EYES
+      stripTime: 3
+      uiWindowPos: 0,0
+      strippingWindowPos: 0,0
+      displayName: Eyes
+    - name: ears
+      slotTexture: ears
+      slotFlags: EARS
+      stripTime: 3
+      uiWindowPos: 2,0
+      strippingWindowPos: 2,0
+      displayName: Ears
+    - name: head
+      slotTexture: head
+      slotFlags: HEAD
+      uiWindowPos: 1,0
+      strippingWindowPos: 1,0
+      displayName: Head
+    - name: suitstorage
+      slotTexture: suit_storage
+      slotFlags:   SUITSTORAGE
+      stripTime: 3
+      uiWindowPos: 2,0
+      strippingWindowPos: 2,5
+      dependsOn: outerClothing
+      displayName: Suit Storage
+    - name: belt
+      slotTexture: belt
+      slotFlags: BELT
+      slotGroup: SecondHotbar
+      stripTime: 6
+      uiWindowPos: 3,1
+      strippingWindowPos: 1,5
+      displayName: Belt
+    - name: back
+      slotTexture: back
+      slotFlags: BACK
+      slotGroup: SecondHotbar
+      stripTime: 6
+      uiWindowPos: 3,0
+      strippingWindowPos: 0,5
+      displayName: Back
+    - name: pocket1
+      slotTexture: pocket
+      slotFlags: POCKET
+      slotGroup: MainHotbar
+      stripTime: 3
+      uiWindowPos: 0,3
+      strippingWindowPos: 0,4
+      displayName: Pocket 1
+      stripHidden: false
+    - name: pocket2
+      slotTexture: pocket
+      slotFlags: POCKET
+      slotGroup: MainHotbar
+      stripTime: 3
+      uiWindowPos: 2,3
+      strippingWindowPos: 1,4
+      displayName: Pocket 2
+      stripHidden: false
+    - name: id
+      slotTexture: id
+      slotFlags: IDCARD
+      slotGroup: SecondHotbar
+      stripTime: 6
+      uiWindowPos: 2,1
+      strippingWindowPos: 2,4
+      displayName: ID
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineRG
+  name: Странный факс
+  suffix: РГ, Коды ядерки
+  components:
+    - type: FaxMachine
+      name: "ERR*?*%!РгERR*?*%!"
+      receiveNukeCodes: true
+      receiveStationGoal: true # Corvax-StationGoal
+      notifyAdmins: true
+      emagged: true
+- type: entity
+  name: Сумка руды Ргшки
+  id: OreBagRGCOOL
+  parent: BaseStorageItem
+  description: A robust bag for salvage specialists and miners alike to carry large amounts of ore.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Mining/ore_bag.rsi
+    state: icon
+  - type: Clothing
+    sprite: Objects/Specific/Mining/ore_bag.rsi
+    quickEquip: false
+    slots:
+    - belt
+  - type: Item
+    size: 0
+  - type: Storage
+    capacity: 2147483646
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      tags:
+        - Ore
+  - type: Dumpable
+
+- type: entity
+  id: PlayerBorgGenericRG
+  parent: BorgChassisGeneric
+  suffix: РГшка
+  components:
+  - type: BorgChassis
+    maxModules: 99
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleCargo
+      - BorgModuleEngineering
+      - BorgModuleJanitor
+      - BorgModuleMedical
+      - BorgModuleService
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - MMIFilled
+      borg_module:
+      - BorgModuleTool
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellAntiqueProto

@@ -2,7 +2,6 @@
   id: CorvaxDelta
   mapName: 'Delta Station'
   mapPath: /Maps/corvax_delta.yml
-  minPlayers: 55
   stations:
     Delta:
       stationProto: StandardNanotrasenStation
