@@ -1,5 +1,6 @@
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Atmos;
+using Content.Shared.Atmos.Reactions;
 using JetBrains.Annotations;
 
 namespace Content.Server.Atmos.Reactions
@@ -19,7 +20,7 @@ namespace Content.Server.Atmos.Reactions
             var initialTrit = mixture.GetMoles(Gas.Tritium);
 
             if (mixture.GetMoles(Gas.Oxygen) < initialTrit ||
-                Atmospherics.MinimumTritiumOxyburnEnergy > (temperature * oldHeatCapacity))
+                Atmospherics.MinimumTritiumOxyburnEnergy > (temperature * oldHeatCapacity * heatScale))
             {
                 burnedFuel = mixture.GetMoles(Gas.Oxygen) / Atmospherics.TritiumBurnOxyFactor;
                 if (burnedFuel > initialTrit)
@@ -60,7 +61,7 @@ namespace Content.Server.Atmos.Reactions
                 temperature = mixture.Temperature;
                 if (temperature > Atmospherics.FireMinimumTemperatureToExist)
                 {
-                    atmosphereSystem.HotspotExpose(location.GridIndex, location.GridIndices, temperature, mixture.Volume);
+                    atmosphereSystem.HotspotExpose(location, temperature, mixture.Volume);
                 }
             }
 

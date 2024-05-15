@@ -89,6 +89,15 @@ namespace Content.Shared.Chemistry.Reagent
         [DataField]
         public SpriteSpecifier? MetamorphicSprite { get; private set; } = null;
 
+        [DataField]
+        public int MetamorphicMaxFillLevels { get; private set; } = 0;
+
+        [DataField]
+        public string? MetamorphicFillBaseName { get; private set; } = null;
+
+        [DataField]
+        public bool MetamorphicChangeColor { get; private set; } = true;
+
         /// <summary>
         /// If this reagent is part of a puddle is it slippery.
         /// </summary>
@@ -96,11 +105,24 @@ namespace Content.Shared.Chemistry.Reagent
         public bool Slippery;
 
         /// <summary>
+        /// How easily this reagent becomes fizzy when aggitated.
+        /// 0 - completely flat, 1 - fizzes up when nudged.
+        /// </summary>
+        [DataField]
+        public float Fizziness;
+
+        /// <summary>
         /// How much reagent slows entities down if it's part of a puddle.
         /// 0 - no slowdown; 1 - can't move.
         /// </summary>
         [DataField]
         public float Viscosity;
+
+        /// <summary>
+        /// Should this reagent work on the dead?
+        /// </summary>
+        [DataField]
+        public bool WorksOnTheDead;
 
         [DataField(serverOnly: true)]
         public FrozenDictionary<ProtoId<MetabolismGroupPrototype>, ReagentEffectsEntry>? Metabolisms;
@@ -117,9 +139,8 @@ namespace Content.Shared.Chemistry.Reagent
         [DataField]
         public float PricePerUnit;
 
-        // TODO: Pick the highest reagent for sounds and add sticky to cola, juice, etc.
         [DataField]
-        public SoundSpecifier FootstepSound = new SoundCollectionSpecifier("FootstepWater");
+        public SoundSpecifier FootstepSound = new SoundCollectionSpecifier("FootstepWater", AudioParams.Default.WithVolume(6));
 
         public FixedPoint2 ReactionTile(TileRef tile, FixedPoint2 reactVolume)
         {
@@ -158,7 +179,7 @@ namespace Content.Shared.Chemistry.Reagent
                 if (plantMetabolizable.ShouldLog)
                 {
                     var entity = args.SolutionEntity;
-                    EntitySystem.Get<SharedAdminLogSystem>().Add(LogType.ReagentEffect, plantMetabolizable.LogImpact,
+                    entMan.System<SharedAdminLogSystem>().Add(LogType.ReagentEffect, plantMetabolizable.LogImpact,
                         $"Plant metabolism effect {plantMetabolizable.GetType().Name:effect} of reagent {ID:reagent} applied on entity {entMan.ToPrettyString(entity):entity} at {entMan.GetComponent<TransformComponent>(entity).Coordinates:coordinates}");
                 }
 

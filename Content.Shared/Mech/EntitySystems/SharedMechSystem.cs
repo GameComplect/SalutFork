@@ -191,10 +191,10 @@ public abstract class SharedMechSystem : EntitySystem
             ? Loc.GetString("mech-equipment-select-popup", ("item", component.CurrentSelectedEquipment))
             : Loc.GetString("mech-equipment-select-none-popup");
 
-        if (_timing.IsFirstTimePredicted)
+        if (_net.IsServer)
             _popup.PopupEntity(popupString, uid);
 
-        Dirty(component);
+        Dirty(uid, component);
     }
 
     /// <summary>
@@ -220,7 +220,7 @@ public abstract class SharedMechSystem : EntitySystem
             return;
 
         equipmentComponent.EquipmentOwner = uid;
-        component.EquipmentContainer.Insert(toInsert, EntityManager);
+        _container.Insert(toInsert, component.EquipmentContainer);
         var ev = new MechEquipmentInsertedEvent(uid);
         RaiseLocalEvent(toInsert, ref ev);
         UpdateUserInterface(uid, component);
@@ -258,7 +258,7 @@ public abstract class SharedMechSystem : EntitySystem
             CycleEquipment(uid, component);
 
         equipmentComponent.EquipmentOwner = null;
-        component.EquipmentContainer.Remove(toRemove, EntityManager);
+        _container.Remove(toRemove, component.EquipmentContainer);
         UpdateUserInterface(uid, component);
     }
 
@@ -278,7 +278,7 @@ public abstract class SharedMechSystem : EntitySystem
             return false;
 
         component.Energy = FixedPoint2.Clamp(component.Energy + delta, 0, component.MaxEnergy);
-        Dirty(component);
+        Dirty(uid, component);
         UpdateUserInterface(uid, component);
         return true;
     }
@@ -306,7 +306,7 @@ public abstract class SharedMechSystem : EntitySystem
             UpdateAppearance(uid, component);
         }
 
-        Dirty(component);
+        Dirty(uid, component);
         UpdateUserInterface(uid, component);
     }
 
@@ -364,7 +364,7 @@ public abstract class SharedMechSystem : EntitySystem
             return false;
 
         SetupUser(uid, toInsert.Value);
-        component.PilotSlot.Insert(toInsert.Value, EntityManager);
+        _container.Insert(toInsert.Value, component.PilotSlot);
         UpdateAppearance(uid, component);
         return true;
     }
@@ -434,7 +434,7 @@ public abstract class SharedMechSystem : EntitySystem
 
         var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Dragged, component.EntryDelay, new MechEntryEvent(), uid, target: uid)
         {
-            BreakOnUserMove = true,
+            BreakOnMove = true,
         };
 
         _doAfter.TryStartDoAfter(doAfterEventArgs);

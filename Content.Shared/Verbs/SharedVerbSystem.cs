@@ -1,6 +1,7 @@
 using Content.Shared.ActionBlocker;
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
+using Content.Shared.Inventory.VirtualItem;
 using Robust.Shared.Containers;
 
 namespace Content.Shared.Verbs
@@ -54,13 +55,21 @@ namespace Content.Shared.Verbs
             return GetLocalVerbs(target, user, new List<Type>() { type }, force);
         }
 
+        /// <inheritdoc cref="GetLocalVerbs(Robust.Shared.GameObjects.EntityUid,Robust.Shared.GameObjects.EntityUid,System.Type,bool)"/>
+        public SortedSet<Verb> GetLocalVerbs(EntityUid target, EntityUid user, List<Type> types, bool force = false)
+        {
+            return GetLocalVerbs(target, user, types, out _, force);
+        }
+
         /// <summary>
         ///     Raises a number of events in order to get all verbs of the given type(s) defined in local systems. This
         ///     does not request verbs from the server.
         /// </summary>
-        public SortedSet<Verb> GetLocalVerbs(EntityUid target, EntityUid user, List<Type> types, bool force = false)
+        public SortedSet<Verb> GetLocalVerbs(EntityUid target, EntityUid user, List<Type> types,
+            out List<VerbCategory> extraCategories, bool force = false)
         {
             SortedSet<Verb> verbs = new();
+            extraCategories = new();
 
             // accessibility checks
             bool canAccess = false;
@@ -97,7 +106,7 @@ namespace Content.Shared.Verbs
                     // This allows you to do things like buckle a dragged person onto a surgery table, without click-dragging
                     // their sprite.
 
-                    if (TryComp(@using, out HandVirtualItemComponent? pull))
+                    if (TryComp(@using, out VirtualItemComponent? pull))
                     {
                         @using = pull.BlockingEntity;
                     }
@@ -107,7 +116,7 @@ namespace Content.Shared.Verbs
             // TODO: fix this garbage and use proper generics or reflection or something else, not this.
             if (types.Contains(typeof(InteractionVerb)))
             {
-                var verbEvent = new GetVerbsEvent<InteractionVerb>(user, target, @using, hands, canInteract, canAccess);
+                var verbEvent = new GetVerbsEvent<InteractionVerb>(user, target, @using, hands, canInteract, canAccess, extraCategories);
                 RaiseLocalEvent(target, verbEvent, true);
                 verbs.UnionWith(verbEvent.Verbs);
             }
@@ -116,35 +125,35 @@ namespace Content.Shared.Verbs
                 && @using != null
                 && @using != target)
             {
-                var verbEvent = new GetVerbsEvent<UtilityVerb>(user, target, @using, hands, canInteract, canAccess);
+                var verbEvent = new GetVerbsEvent<UtilityVerb>(user, target, @using, hands, canInteract, canAccess, extraCategories);
                 RaiseLocalEvent(@using.Value, verbEvent, true); // directed at used, not at target
                 verbs.UnionWith(verbEvent.Verbs);
             }
 
             if (types.Contains(typeof(InnateVerb)))
             {
-                var verbEvent = new GetVerbsEvent<InnateVerb>(user, target, @using, hands, canInteract, canAccess);
+                var verbEvent = new GetVerbsEvent<InnateVerb>(user, target, @using, hands, canInteract, canAccess, extraCategories);
                 RaiseLocalEvent(user, verbEvent, true);
                 verbs.UnionWith(verbEvent.Verbs);
             }
 
             if (types.Contains(typeof(AlternativeVerb)))
             {
-                var verbEvent = new GetVerbsEvent<AlternativeVerb>(user, target, @using, hands, canInteract, canAccess);
+                var verbEvent = new GetVerbsEvent<AlternativeVerb>(user, target, @using, hands, canInteract, canAccess, extraCategories);
                 RaiseLocalEvent(target, verbEvent, true);
                 verbs.UnionWith(verbEvent.Verbs);
             }
 
             if (types.Contains(typeof(ActivationVerb)))
             {
-                var verbEvent = new GetVerbsEvent<ActivationVerb>(user, target, @using, hands, canInteract, canAccess);
+                var verbEvent = new GetVerbsEvent<ActivationVerb>(user, target, @using, hands, canInteract, canAccess, extraCategories);
                 RaiseLocalEvent(target, verbEvent, true);
                 verbs.UnionWith(verbEvent.Verbs);
             }
 
             if (types.Contains(typeof(ExamineVerb)))
             {
-                var verbEvent = new GetVerbsEvent<ExamineVerb>(user, target, @using, hands, canInteract, canAccess);
+                var verbEvent = new GetVerbsEvent<ExamineVerb>(user, target, @using, hands, canInteract, canAccess, extraCategories);
                 RaiseLocalEvent(target, verbEvent, true);
                 verbs.UnionWith(verbEvent.Verbs);
             }
@@ -152,7 +161,7 @@ namespace Content.Shared.Verbs
             // generic verbs
             if (types.Contains(typeof(Verb)))
             {
-                var verbEvent = new GetVerbsEvent<Verb>(user, target, @using, hands, canInteract, canAccess);
+                var verbEvent = new GetVerbsEvent<Verb>(user, target, @using, hands, canInteract, canAccess, extraCategories);
                 RaiseLocalEvent(target, verbEvent, true);
                 verbs.UnionWith(verbEvent.Verbs);
             }
@@ -160,7 +169,7 @@ namespace Content.Shared.Verbs
             if (types.Contains(typeof(EquipmentVerb)))
             {
                 var access = canAccess || _interactionSystem.CanAccessEquipment(user, target);
-                var verbEvent = new GetVerbsEvent<EquipmentVerb>(user, target, @using, hands, canInteract, access);
+                var verbEvent = new GetVerbsEvent<EquipmentVerb>(user, target, @using, hands, canInteract, access, extraCategories);
                 RaiseLocalEvent(target, verbEvent);
                 verbs.UnionWith(verbEvent.Verbs);
             }

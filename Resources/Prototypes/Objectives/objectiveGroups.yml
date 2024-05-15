@@ -12,6 +12,7 @@
   weights:
     CaptainIDStealObjective: 1
     CMOHyposprayStealObjective: 1
+    CMOCrewMonitorStealObjective: 1
     RDHardsuitStealObjective: 1
     NukeDiskStealObjective: 1
     MagbootsStealObjective: 1
@@ -33,7 +34,7 @@
   weights:
     EscapeShuttleObjective: 1
     DieObjective: 0.05
-    HijackShuttleObjective: 0.02
+    HijackShuttleObjective: 0.02 #Corvax-Hijack
 
 - type: weightedRandom
   id: TraitorObjectiveGroupSocial
@@ -51,7 +52,7 @@
 - type: weightedRandom
   id: ThiefBigObjectiveGroups
   weights:
-    ThiefObjectiveGroupStructure: 1
+    ThiefObjectiveGroupStructure: 0 #Temporarily disabled until obvious ways to steal structures are added
     ThiefObjectiveGroupAnimal: 2
 
 - type: weightedRandom
@@ -71,21 +72,19 @@
     TechnologyDiskStealCollectionObjective: 1        #rnd
     FigurineStealCollectionObjective: 0.3          #service
     IDCardsStealCollectionObjective: 1
-    EncryptionKeyStealCollectionObjective: 1
-    CannabisStealCollectionObjective: 1
     LAMPStealCollectionObjective: 2 #only for moth
 
 - type: weightedRandom
   id: ThiefObjectiveGroupItem
   weights:
     ForensicScannerStealObjective: 1                    #sec
-    AmmoTechFabCircuitboardStealObjective: 1
+    FlippoEngravedLighterStealObjective: 0.5
     ClothingHeadHatWardenStealObjective: 1
     ClothingOuterHardsuitVoidParamedStealObjective: 1   #med
     MedicalTechFabCircuitboardStealObjective: 1
     ClothingHeadsetAltMedicalStealObjective: 1
     FireAxeStealObjective: 1                            #eng
-    AmePartStealObjective: 1
+    AmePartFlatpackStealObjective: 1
     ExpeditionsCircuitboardStealObjective: 1            #sup
     CargoShuttleCircuitboardStealObjective: 1
     SalvageShuttleCircuitboardStealObjective: 1
@@ -93,7 +92,7 @@
     BibleStealObjective: 1
     ClothingNeckGoldmedalStealObjective: 1              #other
     ClothingNeckClownmedalStealObjective: 0.5
-    
+
 - type: weightedRandom
   id: ThiefObjectiveGroupStructure
   weights:
@@ -117,11 +116,9 @@
     WalterStealObjective: 1
     MortyStealObjective: 1
     RenaultStealObjective: 1
-    HamletStealObjective: 1
     ShivaStealObjective: 1
-    SmileStealObjective: 1
-    PunPunStealObjective: 1
-    
+    TropicoStealObjective: 1
+
 - type: weightedRandom
   id: ThiefObjectiveGroupEscape
   weights:

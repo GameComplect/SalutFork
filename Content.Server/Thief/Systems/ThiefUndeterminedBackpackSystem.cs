@@ -6,6 +6,11 @@ using Robust.Server.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Thief.Systems;
+
+/// <summary>
+/// <see cref="ThiefUndeterminedBackpackComponent"/>
+/// this system links the interface to the logic, and will output to the player a set of items selected by him in the interface
+/// </summary>
 public sealed class ThiefUndeterminedBackpackSystem : EntitySystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
@@ -44,7 +49,7 @@ public sealed class ThiefUndeterminedBackpackSystem : EntitySystem
             }
         }
         _audio.PlayPvs(backpack.Comp.ApproveSound, backpack.Owner);
-        QueueDel(backpack); //hehe
+        QueueDel(backpack);
     }
     private void OnChangeSet(Entity<ThiefUndeterminedBackpackComponent> backpack, ref ThiefBackpackChangeSetMessage args)
     {
@@ -74,6 +79,6 @@ public sealed class ThiefUndeterminedBackpackSystem : EntitySystem
             data.Add(i, info);
         }
 
-        _ui.TrySetUiState(uid, ThiefBackpackUIKey.Key, new ThiefBackpackBoundUserInterfaceState(data, MaxSelectedSets));
+        _ui.SetUiState(uid, ThiefBackpackUIKey.Key, new ThiefBackpackBoundUserInterfaceState(data, MaxSelectedSets));
     }
 }

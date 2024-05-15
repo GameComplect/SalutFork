@@ -1,33 +1,18 @@
 ﻿using System.Linq;
-using Content.Client.Corvax.TTS;
+using Content.Client.Lobby;
+using Content.Corvax.Interfaces.Shared;
 using Content.Shared.Corvax.TTS;
 using Content.Shared.Preferences;
-using Robust.Shared.Random;
-using Content.Corvax.Interfaces.Client;
 
 namespace Content.Client.Preferences.UI;
 
 public sealed partial class HumanoidProfileEditor
 {
-    private IRobustRandom _random = default!;
-    private TTSSystem _ttsSys = default!;
-    private IClientSponsorsManager? _sponsorsMgr;
-    private List<TTSVoicePrototype> _voiceList = default!;
-    private readonly List<string> _sampleText = new()
-    {
-        "Съешь же ещё этих мягких французских булок, да выпей чаю.",
-        "Клоун, прекрати разбрасывать банановые кожурки офицерам под ноги!",
-        "Капитан, вы уверены что хотите назначить клоуна на должность главы персонала?",
-        "Эс Бэ! Тут человек в сером костюме, с тулбоксом и в маске! Помогите!!"
-    };
+    private ISharedSponsorsManager? _sponsorsMgr;
+    private List<TTSVoicePrototype> _voiceList = new();
 
     private void InitializeVoice()
     {
-        if (!IoCManager.Instance!.TryResolveType(out _sponsorsMgr))
-            return;
-
-        _random = IoCManager.Resolve<IRobustRandom>();
-        _ttsSys = _entMan.System<TTSSystem>();
         _voiceList = _prototypeManager
             .EnumeratePrototypes<TTSVoicePrototype>()
             .Where(o => o.RoundStart)
@@ -40,13 +25,13 @@ public sealed partial class HumanoidProfileEditor
             SetVoice(_voiceList[args.Id].ID);
         };
 
-        _voicePlayButton.OnPressed += _ => { PlayTTS(); };
+        _voicePlayButton.OnPressed += _ => { UserInterfaceManager.GetUIController<LobbyUIController>().PlayTTS(); };
+        IoCManager.Instance!.TryResolveType(out _sponsorsMgr);
     }
 
     private void UpdateTTSVoicesControls()
     {
-        if (Profile is null ||
-            _sponsorsMgr is null)
+        if (Profile is null)
             return;
 
         _voiceButton.Clear();
@@ -64,8 +49,10 @@ public sealed partial class HumanoidProfileEditor
             if (firstVoiceChoiceId == 1)
                 firstVoiceChoiceId = i;
 
+            if (_sponsorsMgr is null)
+                continue;
             if (voice.SponsorOnly && _sponsorsMgr != null &&
-                !_sponsorsMgr.Prototypes.Contains(voice.ID))
+                !_sponsorsMgr.GetClientPrototypes().Contains(voice.ID))
             {
                 _voiceButton.SetItemDisabled(_voiceButton.GetIdx(i), true);
             }
@@ -77,13 +64,5 @@ public sealed partial class HumanoidProfileEditor
         {
             SetVoice(_voiceList[firstVoiceChoiceId].ID);
         }
-    }
-
-    private void PlayTTS()
-    {
-        if (_previewDummy is null || Profile is null)
-            return;
-
-        _ttsSys.RequestGlobalTTS(_random.Pick(_sampleText), Profile.Voice);
     }
 }

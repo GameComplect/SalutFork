@@ -52,9 +52,8 @@
         Blunt: 0.9
         Slash: 0.9
         Piercing: 0.9
-        Heat: 0.2
+        Heat: 0.8
         Radiation: 0.5
-        Caustic: 0.5
   - type: ClothingSpeedModifier
     walkModifier: 0.7
     sprintModifier: 0.7
@@ -76,8 +75,6 @@
   - type: PressureProtection
     highPressureMultiplier: 0.04
     lowPressureMultiplier: 1000
-  - type: TemperatureProtection
-    coefficient: 0.01
   - type: ExplosionResistance
     damageCoefficient: 0.5
   - type: Armor
@@ -155,6 +152,37 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSalvage
+
+- type: entity
+  parent: ClothingOuterHardsuitBase
+  id: ClothingOuterHardsuitMaxim
+  name: salvager maxim hardsuit
+  description: Fire. Heat. These things forge great weapons, they also forge great salvagers.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Hardsuits/maxim.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Hardsuits/maxim.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.02
+    lowPressureMultiplier: 1000
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.5
+        Heat: 0.3
+        Radiation: 0.1
+  - type: ExplosionResistance
+    damageCoefficient: 0.2
+  - type: TemperatureProtection
+    coefficient: 0.001
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitMaxim
 
 #Security Hardsuit
 - type: entity
@@ -337,7 +365,7 @@
   parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitRd
   name: experimental research hardsuit
-  description: A special suit that protects against hazardous, low pressure environments. Has an additional layer of armor. Able to be compressed to small sizes.
+  description: A special suit that protects against hazardous, low pressure environments. Has an additional layer of armor.
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Hardsuits/rd.rsi
@@ -362,7 +390,9 @@
     sprintModifier: 0.75
   - type: HeldSpeedModifier
   - type: Item
-    size: Normal
+    size: Huge
+    shape:
+    - 0,0,4,4 #5X5, can fit in a duffel bag but nothing smaller.
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -470,6 +500,11 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSyndie
+  - type: Tag
+    tags:
+    - MonkeyWearable
+    - Hardsuit
+    - WhitelistChameleon
 
 # Syndicate Medic Hardsuit
 - type: entity
@@ -484,13 +519,17 @@
     sprite: Clothing/OuterClothing/Hardsuits/syndiemedic.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSyndieMedic
+  - type: Tag
+    tags:
+    - Hardsuit
+    - WhitelistChameleon
 
 #Syndicate Elite Hardsuit
 - type: entity
   parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitSyndieElite
   name: syndicate elite hardsuit
-  description: An elite version of the blood-red hardsuit, with improved armor and fireproofing. Property of Gorlex Marauders.
+  description: An elite version of the blood-red hardsuit, with improved mobility and fireproofing. Property of Gorlex Marauders.
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Hardsuits/syndieelite.rsi
@@ -502,16 +541,20 @@
   - type: TemperatureProtection
     coefficient: 0.001
   - type: ExplosionResistance
-    damageCoefficient: 0.3
+    damageCoefficient: 0.2
+  - type: FireProtection
+    reduction: 0.8 # perfect protection like atmos firesuit for pyro tf2 ops
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.5
-        Slash: 0.5
-        Piercing: 0.4
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
         Heat: 0.2
-        Radiation: 0.25
+        Radiation: 0.01
         Caustic: 0.5
+  - type: Item
+    size: Huge
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0
@@ -725,6 +768,20 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitERTLeader
 
+#ERT Chaplain Hardsuit
+- type: entity
+  parent: ClothingOuterHardsuitJuggernaut
+  id: ClothingOuterHardsuitERTChaplain
+  name: ERT chaplain's hardsuit
+  description: A protective hardsuit worn by the chaplains of an Emergency Response Team.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertchaplain.rsi #if you change this, please update the humanoid.yml with a better markers sprite.
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertchaplain.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitERTChaplain
+
 #ERT Engineer Hardsuit
 - type: entity
   parent: ClothingOuterHardsuitCBURN
@@ -766,6 +823,10 @@
     sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertsecurity.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitERTSecurity
+  - type: Tag
+    tags:
+    - Hardsuit
+    - WhitelistChameleon
 
 #ERT Janitor Hardsuit
 - type: entity
@@ -884,6 +945,23 @@
     node: clownHardsuit
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitClown
+
+#Mime Hardsuit
+- type: entity
+  parent: ClothingOuterHardsuitClown
+  id: ClothingOuterHardsuitMime
+  name: mime hardsuit
+  description: A custom-made mime hardsuit.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Hardsuits/mime.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Hardsuits/mime.rsi
+  - type: Construction
+    graph: MimeHardsuit
+    node: mimeHardsuit
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitMime
 
 #Santa's Hardsuit
 - type: entity

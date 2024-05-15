@@ -50,6 +50,15 @@ public sealed class NameIdentifierSystem : EntitySystem
     ///     Generates a new unique name/suffix for a given entity and adds it to <see cref="CurrentIds"/>
     ///     but does not set the entity's name.
     /// </summary>
+    public string GenerateUniqueName(EntityUid uid, ProtoId<NameIdentifierGroupPrototype> proto, out int randomVal)
+    {
+        return GenerateUniqueName(uid, _prototypeManager.Index(proto), out randomVal);
+    }
+
+    /// <summary>
+    ///     Generates a new unique name/suffix for a given entity and adds it to <see cref="CurrentIds"/>
+    ///     but does not set the entity's name.
+    /// </summary>
     public string GenerateUniqueName(EntityUid uid, NameIdentifierGroupPrototype proto, out int randomVal)
     {
         randomVal = 0;
@@ -104,7 +113,7 @@ public sealed class NameIdentifierSystem : EntitySystem
         _metaData.SetEntityName(uid, group.FullName
             ? uniqueName
             : $"{meta.EntityName} ({uniqueName})", meta);
-        Dirty(component);
+        Dirty(uid, component);
     }
 
     private void InitialSetupPrototypes()

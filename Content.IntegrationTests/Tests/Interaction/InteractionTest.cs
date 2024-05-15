@@ -5,14 +5,13 @@ using Content.Client.Construction;
 using Content.Client.Examine;
 using Content.IntegrationTests.Pair;
 using Content.Server.Body.Systems;
+using Content.Server.Hands.Systems;
 using Content.Server.Stack;
 using Content.Server.Tools;
 using Content.Shared.Body.Part;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.Components;
-using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
-using Content.Server.Item;
 using Content.Shared.Mind;
 using Content.Shared.Players;
 using Robust.Client.Input;
@@ -66,6 +65,9 @@ public abstract partial class InteractionTest
     /// </summary>
     protected NetEntity Player;
 
+    protected EntityUid SPlayer => ToServer(Player);
+    protected EntityUid CPlayer => ToClient(Player);
+
     protected ICommonSession ClientSession = default!;
     protected ICommonSession ServerSession = default!;
 
@@ -81,6 +83,9 @@ public abstract partial class InteractionTest
     /// </remarks>
     protected NetEntity? Target;
 
+    protected EntityUid? STarget => ToServer(Target);
+    protected EntityUid? CTarget => ToClient(Target);
+
     /// <summary>
     /// When attempting to start construction, this is the client-side ID of the construction ghost.
     /// </summary>
@@ -93,7 +98,7 @@ public abstract partial class InteractionTest
     protected IPrototypeManager ProtoMan = default!;
     protected IGameTiming STiming = default!;
     protected IComponentFactory Factory = default!;
-    protected SharedHandsSystem HandSys = default!;
+    protected HandsSystem HandSys = default!;
     protected StackSystem Stack = default!;
     protected SharedInteractionSystem InteractSys = default!;
     protected Content.Server.Construction.ConstructionSystem SConstruction = default!;
@@ -152,7 +157,7 @@ public abstract partial class InteractionTest
         ProtoMan = Server.ResolveDependency<IPrototypeManager>();
         Factory = Server.ResolveDependency<IComponentFactory>();
         STiming = Server.ResolveDependency<IGameTiming>();
-        HandSys = SEntMan.System<SharedHandsSystem>();
+        HandSys = SEntMan.System<HandsSystem>();
         InteractSys = SEntMan.System<SharedInteractionSystem>();
         ToolSys = SEntMan.System<ToolSystem>();
         ItemToggleSys = SEntMan.System<SharedItemToggleSystem>();
@@ -178,15 +183,15 @@ public abstract partial class InteractionTest
         await Pair.CreateTestMap();
         PlayerCoords = SEntMan.GetNetCoordinates(MapData.GridCoords.Offset(new Vector2(0.5f, 0.5f)).WithEntityId(MapData.MapUid, Transform, SEntMan));
         TargetCoords = SEntMan.GetNetCoordinates(MapData.GridCoords.Offset(new Vector2(1.5f, 0.5f)).WithEntityId(MapData.MapUid, Transform, SEntMan));
-        await SetTile(Plating, grid: MapData.MapGrid);
+        await SetTile(Plating, grid: MapData.Grid.Comp);
 
         // Get player data
         var sPlayerMan = Server.ResolveDependency<Robust.Server.Player.IPlayerManager>();
         var cPlayerMan = Client.ResolveDependency<Robust.Client.Player.IPlayerManager>();
-        if (cPlayerMan.LocalPlayer?.Session == null)
+        if (Client.Session == null)
             Assert.Fail("No player");
-        ClientSession = cPlayerMan.LocalPlayer!.Session!;
-        ServerSession = sPlayerMan.GetSessionByUserId(ClientSession.UserId);
+        ClientSession = Client.Session!;
+        ServerSession = sPlayerMan.GetSessionById(ClientSession.UserId);
 
         // Spawn player entity & attach
         EntityUid? old = default;
@@ -234,7 +239,7 @@ public abstract partial class InteractionTest
         Assert.Multiple(() =>
         {
             Assert.That(CEntMan.GetNetEntity(cPlayerMan.LocalEntity), Is.EqualTo(Player));
-            Assert.That(sPlayerMan.GetSessionByUserId(ClientSession.UserId).AttachedEntity, Is.EqualTo(SEntMan.GetEntity(Player)));
+            Assert.That(sPlayerMan.GetSessionById(ClientSession.UserId).AttachedEntity, Is.EqualTo(SEntMan.GetEntity(Player)));
         });
     }
 

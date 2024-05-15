@@ -43,6 +43,12 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
         UpdatesOutsidePrediction = true;
     }
 
+    public override void FrameUpdate(float frameTime)
+    {
+        base.FrameUpdate(frameTime);
+        UpdateEffects();
+    }
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -50,7 +56,7 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
         if (!Timing.IsFirstTimePredicted)
             return;
 
-        var entityNull = _player.LocalPlayer?.ControlledEntity;
+        var entityNull = _player.LocalEntity;
 
         if (entityNull == null)
             return;
@@ -69,7 +75,7 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
         var useDown = _inputSystem.CmdStates.GetState(EngineKeyFunctions.Use);
         var altDown = _inputSystem.CmdStates.GetState(EngineKeyFunctions.UseSecondary);
 
-        if (useDown != BoundKeyState.Down && altDown != BoundKeyState.Down)
+        if (weapon.AutoAttack || useDown != BoundKeyState.Down && altDown != BoundKeyState.Down)
         {
             if (weapon.Attacking)
             {

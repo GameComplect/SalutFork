@@ -34,4 +34,16 @@ public sealed partial class IdCardComponent : Component
     [DataField("jobDepartments")]
     [AutoNetworkedField]
     public List<LocId> JobDepartments = new();
+
+    /// <summary>
+    /// Determines if accesses from this card should be logged by <see cref="AccessReaderComponent"/>
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool BypassLogging;
+
+    [DataField]
+    public LocId NameLocId = "access-id-card-component-owner-name-job-title-text";
+
+    [DataField]
+    public LocId FullNameLocId = "access-id-card-component-owner-full-name-job-title-text";
 }

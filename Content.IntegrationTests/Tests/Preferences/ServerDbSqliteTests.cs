@@ -4,6 +4,8 @@ using Content.Server.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
 using Content.Shared.Preferences;
+using Content.Shared.Preferences.Loadouts;
+using Content.Shared.Preferences.Loadouts.Effects;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Robust.Shared.Configuration;
@@ -11,7 +13,6 @@ using Robust.Shared.Enums;
 using Robust.Shared.Log;
 using Robust.Shared.Maths;
 using Robust.Shared.Network;
-using Robust.Shared.Prototypes;
 using Robust.UnitTesting;
 
 namespace Content.IntegrationTests.Tests.Preferences
@@ -60,15 +61,15 @@ namespace Content.IntegrationTests.Tests.Preferences
                     Color.Beige,
                     new ()
                 ),
-                ClothingPreference.Jumpskirt,
-                BackpackPreference.Backpack,
+                SpawnPriorityPreference.None,
                 new Dictionary<string, JobPriority>
                 {
                     {SharedGameTicker.FallbackOverflowJob, JobPriority.High}
                 },
                 PreferenceUnavailableMode.StayInLobby,
                 new List<string> (),
-                new List<string>()
+                new List<string>(),
+                new Dictionary<string, RoleLoadout>()
             );
         }
 
@@ -89,7 +90,7 @@ namespace Content.IntegrationTests.Tests.Preferences
             var pair = await PoolManager.GetServerClient();
             var db = GetDb(pair.Server);
             // Database should be empty so a new GUID should do it.
-            Assert.Null(await db.GetPlayerPreferencesAsync(NewUserId()));
+            Assert.That(await db.GetPlayerPreferencesAsync(NewUserId()), Is.Null);
 
             await pair.CleanReturnAsync();
         }
@@ -121,6 +122,17 @@ namespace Content.IntegrationTests.Tests.Preferences
             await db.SaveCharacterSlotAsync(username, null, 1);
             var prefs = await db.GetPlayerPreferencesAsync(username);
             Assert.That(!prefs.Characters.Any(p => p.Key != 0));
+            await pair.CleanReturnAsync();
+        }
+
+        [Test]
+        public async Task TestNoPendingDatabaseChanges()
+        {
+            var pair = await PoolManager.GetServerClient();
+            var server = pair.Server;
+            var db = GetDb(server);
+            Assert.That(async () => await db.HasPendingModelChanges(), Is.False,
+                "The database has pending model changes. Add a new migration to apply them. See https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations");
             await pair.CleanReturnAsync();
         }
 

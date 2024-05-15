@@ -1,5 +1,6 @@
 - type: reaction
   id: BloodBreakdown
+  source: true
   requiredMixerCategories:
   - Centrifuge
   reactants:
@@ -14,6 +15,7 @@
 
 - type: reaction
   id: SlimeBloodBreakdown
+  source: true
   requiredMixerCategories:
   - Centrifuge
   reactants:
@@ -23,8 +25,22 @@
     Water: 4
     Nitrogen: 1
 
+
+- type: reaction
+  id: SapBloodBreakdown
+  source: true
+  requiredMixerCategories:
+  - Centrifuge
+  reactants:
+    Sap:
+      amount: 10
+  products:
+    Water: 9
+    Sugar: 1
+
 - type: reaction
   id: CopperBloodBreakdown
+  source: true
   requiredMixerCategories:
   - Centrifuge
   reactants:
@@ -39,6 +55,7 @@
 
 - type: reaction
   id: ZombieBloodBreakdown
+  source: true
   requiredMixerCategories:
   - Centrifuge
   reactants:

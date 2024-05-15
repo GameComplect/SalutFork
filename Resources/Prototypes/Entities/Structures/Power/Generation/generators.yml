@@ -54,6 +54,7 @@
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: PacifismDangerousAttack
   - type: Destructible
     thresholds:
     - trigger:
@@ -70,7 +71,7 @@
         acts: ["Destruction"]
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalBreak
       - !type:ExplodeBehavior
   - type: Explosive
     explosionType: Default
@@ -246,6 +247,10 @@
     range: 5
     sound:
       path: /Audio/Ambience/Objects/buzzing.ogg
+  - type: GuideHelp
+    guides:
+    - RTG
+    - Power
   - type: Destructible
     thresholds:
       - trigger:
@@ -260,7 +265,7 @@
         behaviors:
           - !type:PlaySoundBehavior
             sound:
-              path: /Audio/Effects/metalbreak.ogg
+              collection: MetalBreak
           - !type:SpawnEntitiesBehavior
             spawn:
               GeneratorRTGDamaged:
@@ -304,7 +309,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/metalbreak.ogg
+          collection: MetalBreak
       - !type:SpawnEntitiesBehavior
         spawn:
           SheetSteel1:

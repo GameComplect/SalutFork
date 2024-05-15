@@ -20,6 +20,7 @@
     soundHit:
       collection: BoxingHit
     animation: WeaponArcFist
+    mustBeEquippedToUse: true
   - type: Fiber
     fiberMaterial: fibers-leather
     fiberColor: fibers-red
@@ -83,12 +84,14 @@
   suffix: Rigged
   components:
   - type: StaminaDamageOnHit
-    damage: 30
+    damage: 25
   - type: MeleeWeapon
-    attackRate: 1.5
+    attackRate: 1.4
     damage:
       types:
         Blunt: 8
+    bluntStaminaDamageFactor: 0.0 # so blunt doesn't deal stamina damage at all
+    mustBeEquippedToUse: true
 
 - type: entity
   parent: ClothingHandsBase
@@ -129,7 +132,7 @@
 
 #### Medical
 - type: entity
-  parent: ClothingHandsBase
+  parent: ClothingHandsButcherable
   id: ClothingHandsGlovesLatex
   name: latex gloves
   description: Thin sterile latex gloves. Basic PPE for any doctor.
@@ -143,7 +146,7 @@
   - type: FingerprintMask
 
 - type: entity
-  parent: ClothingHandsBase
+  parent: ClothingHandsButcherable
   id: ClothingHandsGlovesNitrile
   name: nitrile gloves
   description: High-quality nitrile gloves. Expensive medical PPE.
@@ -157,7 +160,7 @@
   - type: FingerprintMask
 ####
 - type: entity
-  parent: ClothingHandsBase
+  parent: ClothingHandsButcherable
   id: ClothingHandsGlovesLeather
   name: botanist's leather gloves
   description: These leather gloves protect against thorns, barbs, prickles, spikes and other harmful objects of floral origin. They're also quite warm.
@@ -188,7 +191,7 @@
   - type: FingerprintMask
 
 - type: entity
-  parent: ClothingHandsBase
+  parent: ClothingHandsButcherable
   id: ClothingHandsGlovesRobohands
   name: robohands gloves
   description: Beep boop borp!
@@ -232,6 +235,14 @@
     stripTimeReduction: 1
     stealthy: true
   - type: NinjaGloves
+# Corvax-HiddenDesc-Start
+  - type: HiddenDescription
+    entries:
+    - label: corvax-hidden-desc-ThievingGloves-thief
+      whitelistMind:
+        components:
+          - ThiefRole
+# Corvax-HiddenDesc-End
 
 - type: entity
   parent: ClothingHandsGlovesColorBlack
@@ -239,10 +250,12 @@
   name: combat gloves
   description: These tactical gloves are fireproof and shock resistant.
   components:
-  - type: Sprite # Corvax-Resprite
+  - type: Sprite
     sprite: Clothing/Hands/Gloves/combat.rsi
-  - type: Clothing # Corvax-Resprite
+  - type: Clothing
     sprite: Clothing/Hands/Gloves/combat.rsi
+  - type: GloveHeatResistance
+    heatResistance: 1400
   - type: Insulated
   - type: Fiber
     fiberMaterial: fibers-insulative
@@ -271,9 +284,9 @@
   description: High-quality combat gloves to protect hands from mechanical damage during combat.
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/Color/olive.rsi
+    sprite: Clothing/Hands/Gloves/mercbattle.rsi
   - type: Clothing
-    sprite: Clothing/Hands/Gloves/Color/olive.rsi
+    sprite: Clothing/Hands/Gloves/mercbattle.rsi
   - type: Butcherable
     butcheringType: Knife
     spawned:
@@ -283,7 +296,7 @@
     fiberColor: fibers-olive
 
 - type: entity
-  parent: ClothingHandsBase
+  parent: ClothingHandsButcherable
   id: ClothingHandsGlovesFingerless
   name: fingerless gloves
   description: Plain black gloves without fingertips for the hard working.
@@ -311,7 +324,7 @@
     fiberColor: fibers-yellow
 
 - type: entity
-  parent: ClothingHandsBase
+  parent: ClothingHandsButcherable
   id: ClothingHandsGlovesMercFingerless
   name: mercenary fingerless gloves
   description: Gloves that may not protect you from finger burns, but will make you cooler.
@@ -326,7 +339,7 @@
 
 - type: entity
   # Intentionally named after regular gloves, they're meant to be sneaky.
-  # This means they can also be butchered if you need to look unsus before a very thorough search...
+  # This means they can also be butchered if you need to look un-sus before a very thorough search...
   parent: ClothingHandsGlovesColorBlack
   id: ThievingGloves
   suffix: Thieving
@@ -336,6 +349,19 @@
   - type: Thieving
     stripTimeReduction: 1.5
     stealthy: true
+# Corvax-HiddenDesc-Start
+  - type: HiddenDescription
+    entries:
+    - label: corvax-hidden-desc-ThievingGloves-syndicate
+      whitelistMind:
+        components:
+          - TraitorRole
+          - NukeOperative
+    - label: corvax-hidden-desc-ThievingGloves-thief
+      whitelistMind:
+        components:
+          - ThiefRole
+# Corvax-HiddenDesc-End
 
 - type: entity
   parent: ClothingHandsGlovesColorWhite
@@ -347,7 +373,7 @@
   - type: Unremoveable
 
 - type: entity
-  parent: ClothingHandsBase
+  parent: ClothingHandsButcherable
   id: ClothingHandsGlovesNorthStar
   name: gloves of the north star
   description: These gloves allow you to punch incredibly fast.
@@ -357,6 +383,7 @@
   - type: Clothing
     sprite: Clothing/Hands/Gloves/northstar.rsi
   - type: MeleeWeapon
+    autoAttack: true
     attackRate: 4
     damage:
       types:
@@ -364,6 +391,7 @@
     soundHit:
       collection: Punch
     animation: WeaponArcFist
+    mustBeEquippedToUse: true
   - type: Fiber
     fiberMaterial: fibers-leather
     fiberColor: fibers-blue
@@ -371,12 +399,11 @@
   - type: MeleeSpeech
   - type: ActivatableUI
     key: enum.MeleeSpeechUiKey.Key
-    closeOnHandDeselect: false
-    rightClickOnly: true
+    verbOnly: true
   - type: Actions
   - type: UserInterface
     interfaces:
-      - key: enum.MeleeSpeechUiKey.Key
+      enum.MeleeSpeechUiKey.Key:
         type: MeleeSpeechBoundUserInterface
   - type: StaticPrice
     price: 0
@@ -394,7 +421,7 @@
   - type: FingerprintMask
   - type: GuideHelp
     guides:
-    - DNA
+    - Forensics
 
 # TODO Make lubed items not slip in hands
 - type: entity
