@@ -2,6 +2,7 @@
   id: CorvaxSplit
   mapName: 'Split Stations'
   mapPath: /Maps/corvax_split.yml
+  minPlayers: 70
   stations:
     Mayhen:
       stationProto: NanotrasenStationNoArrivals

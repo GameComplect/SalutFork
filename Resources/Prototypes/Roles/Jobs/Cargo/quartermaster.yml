@@ -9,12 +9,12 @@
 #      time: 21600 #6 hrs
     - !type:RoleTimeRequirement
       role: JobSalvageSpecialist
-      time: 14400 #10 hrs # Corvax-RoleTime
+      time: 36000 #10 hrs # Corvax-RoleTime
     - !type:DepartmentTimeRequirement
       department: Cargo
-      time: 18000 #15 hrs # Corvax-RoleTime
-    - !type:OverallPlaytimeRequirement
-      time: 36000 #40 hrs
+      time: 54000 #15 hrs # Corvax-RoleTime
+#    - !type:OverallPlaytimeRequirement
+#      time: 144000 #40 hrs
   weight: 10
   startingGear: QuartermasterGear
   icon: "JobIconQuarterMaster"

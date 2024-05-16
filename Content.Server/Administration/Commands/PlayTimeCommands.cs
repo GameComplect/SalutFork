@@ -6,7 +6,7 @@ using Robust.Shared.Console;
 
 namespace Content.Server.Administration.Commands;
 
-[AdminCommand(AdminFlags.Admin)] // Corvax-DiscordRoles
+[AdminCommand(AdminFlags.Permissions)] // Corvax-DiscordRoles
 public sealed class PlayTimeAddOverallCommand : IConsoleCommand
 {
     [Dependency] private readonly IPlayerManager _playerManager = default!;

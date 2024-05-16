@@ -3,7 +3,7 @@
   alias:
     - survival
   name: survival-title
-  showInVote: true # secret
+  showInVote: false # secret
   description: survival-description
   rules:
     - RampingStationEventScheduler
@@ -13,7 +13,7 @@
   id: AllAtOnce
   name: all-at-once-title
   description: all-at-once-description
-  showInVote: true
+  showInVote: false
   rules:
     - Nukeops
     - Traitor
@@ -27,7 +27,7 @@
   - extended
   - shittersafari
   name: extended-title
-  showInVote: true #2boring2vote
+  showInVote: false #2boring2vote
   description: extended-description
   rules:
   - BasicStationEventScheduler
@@ -79,8 +79,8 @@
     - sandbox
   name: sandbox-title
   description: sandbox-description
-  showInVote: true # Not suitable for use without admin intervention, since entity spamming can quickly crash a server
-  maxPlayers: 4
+  showInVote: false # Not suitable for use without admin intervention, since entity spamming can quickly crash a server
+  maxPlayers: 5
   rules:
     - Sandbox
 
@@ -90,7 +90,7 @@
     - traitor
   name: traitor-title
   description: traitor-description
-  showInVote: true
+  showInVote: false
   rules:
     - Traitor
     - SubGamemodesRule
