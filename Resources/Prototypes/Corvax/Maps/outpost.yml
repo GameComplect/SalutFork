@@ -2,7 +2,6 @@
   id: CorvaxOutpost
   mapName: 'Outpost'
   mapPath: /Maps/corvax_outpost.yml
-  minPlayers: 0
   stations:
     Outpost:
       stationProto: StandardNanotrasenStation
