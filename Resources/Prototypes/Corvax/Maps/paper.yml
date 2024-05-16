@@ -2,6 +2,7 @@
   id: CorvaxPaper
   mapName: 'Paper Station'
   mapPath: /Maps/corvax_paper.yml
+  minPlayers: 0
   stations:
     CorvaxPaper:
       stationProto: StandardNanotrasenStation

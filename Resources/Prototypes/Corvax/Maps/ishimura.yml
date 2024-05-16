@@ -2,7 +2,7 @@
   id: CorvaxIshimura
   mapName: 'USG Ishimura'
   mapPath: /Maps/corvax_ishimura.yml
-  maxPlayers: 50
+  minPlayers: 0
   stations:
     Ishimura:
       stationProto: StandardNanotrasenStation

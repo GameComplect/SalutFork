@@ -2,6 +2,7 @@
   id: CorvaxSilly
   mapName: 'Silly Island'
   mapPath: /Maps/corvax_silly.yml
+  minPlayers: 0
   stations:
     Silly:
       stationProto: StandardNanotrasenStation
