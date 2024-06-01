@@ -6,15 +6,15 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobAtmosphericTechnician
-      time: 36000 #10 hrs # Corvax-RoleTime
+      time: 10800 #10 hrs # Corvax-RoleTime
 #    - !type:RoleTimeRequirement
 #      role: JobStationEngineer
 #      time: 21600 #6 hrs
     - !type:DepartmentTimeRequirement
       department: Engineering
-      time: 54000 #15 hrs # Corvax-RoleTime
-#    - !type:OverallPlaytimeRequirement
-#      time: 144000 #40 hrs
+      time: 18000 #15 hrs # Corvax-RoleTime
+    - !type:OverallPlaytimeRequirement
+      time: 36000 #40 hrs
   weight: 10
   startingGear: ChiefEngineerGear
   icon: "JobIconChiefEngineer"
@@ -29,7 +29,6 @@
   - ChiefEngineer
   - Atmospherics
   - Brig
-  - Cryogenics
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -40,7 +39,14 @@
 - type: startingGear
   id: ChiefEngineerGear
   equipment:
+    head: ClothingHeadHatHardhatWhite
+    jumpsuit: ClothingUniformJumpsuitChiefEngineer
+    back: ClothingBackpackChiefEngineerFilled
+    shoes: ClothingShoesColorBrown
     id: CEPDA
     eyes: ClothingEyesGlassesMeson
     ears: ClothingHeadsetCE
     belt: ClothingBeltUtilityEngineering
+  innerClothingSkirt: ClothingUniformJumpskirtChiefEngineer
+  satchel: ClothingBackpackSatchelChiefEngineerFilled
+  duffelbag: ClothingBackpackDuffelChiefEngineerFilled
