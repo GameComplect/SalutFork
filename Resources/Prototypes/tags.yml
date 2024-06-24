@@ -256,6 +256,9 @@
   id: CableCoil
 
 - type: Tag
+  id: Candle
+
+- type: Tag
   id: Cake
 
 - type: Tag
@@ -360,6 +363,10 @@
 
 - type: Tag
   id: Chicken
+
+# Allowed to control someone wearing a Chef's hat if inside their hat.
+- type: Tag
+  id: ChefPilot
 
 - type: Tag
   id: ChemDispensable # container that can go into the chem dispenser
