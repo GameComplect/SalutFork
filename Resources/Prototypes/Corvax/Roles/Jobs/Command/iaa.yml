@@ -4,14 +4,14 @@
   description: job-description-iaa
   playTimeTracker: JobIAA
   requirements:
-    - !type:DepartmentTimeRequirement
-      department: Command
-      time: 36000 # Salyut-RoleTime
-    - !type:DepartmentTimeRequirement
-      department: Security
-      time: 18000 # Salyut-RoleTime
-    - !type:OverallPlaytimeRequirement
-      time: 54000 #30 hrs # Salyut-RoleTime
+  - !type:DepartmentTimeRequirement
+    department: Command
+    time: 72000
+  - !type:DepartmentTimeRequirement
+    department: Security
+    time: 36000
+  - !type:AgeRequirement
+    requiredAge: 21
   startingGear: IAAGear
   icon: "JobIconIAA"
   supervisors: job-supervisors-centcom
