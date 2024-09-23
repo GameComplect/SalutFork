@@ -3,15 +3,17 @@
   name: job-name-technical-assistant
   description: job-description-technical-assistant
   playTimeTracker: JobTechnicalAssistant
-#  requirements:
-#    - !type:DepartmentTimeRequirement
-#      department: Engineering
-#      time: 36000 #10 hrs # Corvax-RoleTime
-#      inverted: true # stop playing intern if you're good at engineering!
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 3600 #1 hr
+    # - !type:DepartmentTimeRequirement
+      # department: Engineering
+      # time: 36000 #10 hrs # Corvax-RoleTime
+      # inverted: true # stop playing intern if you're good at engineering!
   startingGear: TechnicalAssistantGear
   icon: "JobIconTechnicalAssistant"
   supervisors: job-supervisors-engineering
-  canBeAntag: false
+  canBeAntag: true # Corvax-MRP: Available not only for newbies
   access:
   - Maintenance
   - Engineering
