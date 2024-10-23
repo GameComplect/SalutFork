@@ -6,6 +6,8 @@
   maxLimit: 3
   loadouts:
   - SpaceLaw # Corvax-HyperLink
+  - FlowerWreath
+  - Hairflower
   - PlushieLizard
   - PlushieSpaceLizard
   - Lighter
@@ -19,6 +21,7 @@
   - ClothingNeckAromanticPin
   - ClothingNeckAsexualPin
   - ClothingNeckBisexualPin
+  - ClothingNeckGayPin
   - ClothingNeckIntersexPin
   - ClothingNeckLesbianPin
   - ClothingNeckNonBinaryPin
@@ -1082,6 +1085,7 @@
   loadouts:
   - DetectiveArmorVest
   - DetectiveCoat
+  - DetectiveCoatGrey
 
 - type: loadoutGroup
   id: SecurityCadetJumpsuit
