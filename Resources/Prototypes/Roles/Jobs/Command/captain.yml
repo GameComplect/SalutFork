@@ -18,6 +18,10 @@
       time: 18000 # 15 hours
     - !type:OverallPlaytimeRequirement
       time: 72000 #140 hrs # Corvax-RoleTime
+    - !type:TraitsRequirement #Corvax-TraitsRequirement
+      inverted: true
+      traits:
+      - Muted
   weight: 20
   startingGear: CaptainGear
   icon: "JobIconCaptain"

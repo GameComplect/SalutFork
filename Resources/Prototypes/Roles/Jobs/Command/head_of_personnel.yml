@@ -17,7 +17,11 @@
 #      department: Command
 #      time: 72000 # 20 hrs
     - !type:OverallPlaytimeRequirement
-      time: 36000 #50 hrs # Corvax-RoleTime
+      time: 36000 #50 hrs # Corvax-Role
+    - !type:TraitsRequirement #Corvax-TraitsRequirement
+      inverted: true
+      traits:
+      - Muted
   weight: 20
   startingGear: HoPGear
   icon: "JobIconHeadOfPersonnel"
