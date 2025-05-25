@@ -134029,16 +134029,6 @@ entities:
       parent: 13307
     - type: Physics
       canCollide: False
-- proto: ComplexXenoArtifact
-  entities:
-  - uid: 38938
-    components:
-    - type: Transform
-      pos: -3.5,-14.5
-      parent: 38538
-    - type: Physics
-      sleepingAllowed: False
-    - type: BiasedArtifact
 - proto: ComputerAlert
   entities:
   - uid: 12002
