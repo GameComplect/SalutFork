@@ -39915,7 +39915,7 @@ entities:
   - uid: 601
     components:
     - type: MetaData
-      name: ЛКП Церковь
+      name: ЛКП Храм
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 12.5,-20.5
@@ -208431,7 +208431,7 @@ entities:
       setupAvailableNetworks:
       - SurveillanceCameraService
       nameSet: True
-      id: Церковь
+      id: Храм
   - uid: 23586
     components:
     - type: Transform

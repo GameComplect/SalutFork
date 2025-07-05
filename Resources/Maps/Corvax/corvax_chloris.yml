@@ -246030,7 +246030,7 @@ entities:
   - uid: 35844
     components:
     - type: MetaData
-      name: кнопка с замком (закрыть церковь)
+      name: кнопка с замком (закрыть храм)
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 77.5,88.5
@@ -246053,7 +246053,7 @@ entities:
         - - Pressed
           - Toggle
     - type: Label
-      currentLabel: закрыть церковь
+      currentLabel: закрыть храм
     - type: NameModifier
       baseName: кнопка с замком
   - uid: 35845
@@ -296117,7 +296117,7 @@ entities:
   - uid: 41852
     components:
     - type: MetaData
-      name: подстанция библи/церк
+      name: подстанция библи/храм
     - type: Transform
       pos: 100.5,83.5
       parent: 2
@@ -299422,7 +299422,7 @@ entities:
       setupAvailableNetworks:
       - SurveillanceCameraService
       nameSet: True
-      id: Церковь
+      id: Храм
   - uid: 51343
     components:
     - type: Transform
@@ -299475,7 +299475,7 @@ entities:
       setupAvailableNetworks:
       - SurveillanceCameraService
       nameSet: True
-      id: Церковь
+      id: Храм
 - proto: SurveillanceCameraSupply
   entities:
   - uid: 42182

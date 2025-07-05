@@ -52264,7 +52264,7 @@ entities:
   - uid: 1717
     components:
     - type: MetaData
-      name: Церковь
+      name: Храм
     - type: Transform
       pos: -64.5,68.5
       parent: 2
@@ -162596,9 +162596,9 @@ entities:
       pos: -63.5,63.5
       parent: 2
     - type: NavMapBeacon
-      text: Церковь
+      text: Храм
     - type: WarpPoint
-      location: СЕР - Церковь
+      location: СЕР - Храм
 - proto: DefaultStationBeaconChemistry
   entities:
   - uid: 22054
@@ -267672,8 +267672,8 @@ entities:
   - uid: 36617
     components:
     - type: MetaData
-      desc: Эта кнопка закрывает ставни церкви.
-      name: закрытие церкви
+      desc: Эта кнопка закрывает ставни храма.
+      name: закрытие храма
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -65.5,66.5
@@ -322860,7 +322860,7 @@ entities:
       setupAvailableNetworks:
       - SurveillanceCameraService
       nameSet: True
-      id: Церковь
+      id: Храм
   - uid: 44825
     components:
     - type: Transform
@@ -322933,7 +322933,7 @@ entities:
       pos: -76.5,68.5
       parent: 2
     - type: SurveillanceCamera
-      id: Морг церкви
+      id: Морг храма
   - uid: 44832
     components:
     - type: Transform
