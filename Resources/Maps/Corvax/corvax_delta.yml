@@ -36318,7 +36318,7 @@ entities:
   - uid: 201
     components:
     - type: MetaData
-      name: карцер генпопа
+      name: общий блок карцер
     - type: Transform
       pos: 37.5,16.5
       parent: 2
@@ -195018,12 +195018,12 @@ entities:
   - uid: 25424
     components:
     - type: MetaData
-      name: голопад (Генпоп)
+      name: голопад (Общий Блок)
     - type: Transform
       pos: 41.5,17.5
       parent: 2
     - type: Label
-      currentLabel: Генпоп
+      currentLabel: Общий Блок
     - type: NameModifier
       baseName: голопад
 - proto: HolopadAiBackupPower
@@ -239114,7 +239114,7 @@ entities:
       setupAvailableNetworks:
       - SurveillanceCameraSecurity
       nameSet: True
-      id: Генпоп шкафчики
+      id: Общий блок шкафчики
   - uid: 31423
     components:
     - type: Transform
@@ -239125,7 +239125,7 @@ entities:
       setupAvailableNetworks:
       - SurveillanceCameraSecurity
       nameSet: True
-      id: Генпоп вход
+      id: Общий блок вход
   - uid: 31424
     components:
     - type: Transform
@@ -239136,7 +239136,7 @@ entities:
       setupAvailableNetworks:
       - SurveillanceCameraSecurity
       nameSet: True
-      id: Генпоп главный
+      id: Общий блок главный
   - uid: 31425
     components:
     - type: Transform
@@ -239147,7 +239147,7 @@ entities:
       setupAvailableNetworks:
       - SurveillanceCameraSecurity
       nameSet: True
-      id: Генпоп ботаника
+      id: Общий блок ботаника
   - uid: 31426
     components:
     - type: Transform

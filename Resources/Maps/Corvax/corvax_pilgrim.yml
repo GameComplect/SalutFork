@@ -37996,8 +37996,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -74.5,-0.5
       parent: 2
-    - type: PaintableAirlock
-      department: Command
 - proto: AirlockMaint
   entities:
   - uid: 309
@@ -39659,7 +39657,7 @@ entities:
   - uid: 564
     components:
     - type: MetaData
-      name: ЛКП СБ вход генпоп
+      name: ЛКП СБ вход общищ блок
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -39.5,8.5
@@ -40304,7 +40302,7 @@ entities:
   - uid: 655
     components:
     - type: MetaData
-      name: ЛКП СБ генпоп
+      name: ЛКП СБ общий блок
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -30.5,2.5
@@ -165205,8 +165203,8 @@ entities:
   - uid: 18874
     components:
     - type: MetaData
-      desc: Эта кнопка переключает ставни генпопа.
-      name: ставни генпопа
+      desc: Эта кнопка переключает ставни общего блока.
+      name: ставни общего блока
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -39.5,2.5
@@ -207440,7 +207438,7 @@ entities:
       setupAvailableNetworks:
       - SurveillanceCameraGeneral
       nameSet: True
-      id: Коридор у генпопа
+      id: Коридор у общего блока
 - proto: SurveillanceCameraMedical
   entities:
   - uid: 23506
@@ -208181,7 +208179,7 @@ entities:
       setupAvailableNetworks:
       - SurveillanceCameraSecurity
       nameSet: True
-      id: Генпоп главный
+      id: Общий блок главный
   - uid: 23578
     components:
     - type: Transform

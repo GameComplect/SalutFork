@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 262.0.0
+  engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 06/11/2025 16:51:06
-  entityCount: 51384
+  time: 07/22/2025 15:33:57
+  entityCount: 51378
 maps:
 - 1
 grids:
@@ -18172,23 +18172,6 @@ entities:
     - type: ContainedSolution
       containerName: food
       container: 3
-  - uid: 7
-    components:
-    - type: MetaData
-      name: solution - drink
-    - type: Transform
-      parent: 6
-    - type: Solution
-      solution:
-        maxVol: 30
-        name: drink
-        reagents:
-        - data: []
-          ReagentId: Sake
-          Quantity: 30
-    - type: ContainedSolution
-      containerName: drink
-      container: 6
   - uid: 10
     components:
     - type: MetaData
@@ -26293,7 +26276,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -193698.3
+      secondsUntilStateChange: -193734.89
       state: Opening
     - type: Forensics
       residues: []
@@ -27144,7 +27127,7 @@ entities:
       pos: 25.5,132.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -198698.22
+      secondsUntilStateChange: -198734.81
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -27327,7 +27310,7 @@ entities:
       pos: 99.5,50.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -115989.46
+      secondsUntilStateChange: -116026.06
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -28710,7 +28693,7 @@ entities:
       pos: 14.5,132.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -186779.3
+      secondsUntilStateChange: -186815.89
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -123273,8 +123256,6 @@ entities:
           - 14161
           - 14162
           - 14164
-          - 14169
-          - 14170
           - 14171
         paper_label: !type:ContainerSlot
           showEnts: False
@@ -140052,109 +140033,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: DrinkSakeGlass
-  entities:
-  - uid: 6
-    components:
-    - type: MetaData
-      desc: Алкогольный напиток, изготовленный путём брожения шлифованного риса.
-      name: стакан саке
-    - type: Transform
-      parent: 5
-    - type: SolutionContainerManager
-      solutions: null
-      containers:
-      - drink
-    - type: TransformableContainer
-      transformed: True
-      currentReagent:
-        metamorphicChangeColor: True
-        pricePerUnit: 0
-        flavor: sake
-        flavorMinimum: 0.1
-        slipData: null
-        evaporationSpeed: 0
-        absorbent: False
-        fizziness: 0
-        viscosity: 0
-        friction: 1
-        worksOnTheDead: False
-        metabolisms:
-          Drink:
-            effects:
-            - !type:SatiateThirst
-              factor: 2
-              probability: 1
-              conditions: null
-            - !type:AdjustReagent
-              probability: 1
-              conditions: null
-              amount: 0.06
-              group: null
-              reagent: Ethanol
-            metabolismRate: 0.5
-        reactiveEffects:
-          Flammable:
-            effects:
-            - !type:FlammableReaction
-              probability: 1
-              conditions: null
-              multiplierOnExisting: -1
-              multiplier: 0.05
-            methods:
-            - Touch
-        tileReactions:
-        - !type:FlammableTileReaction
-          temperatureMultiplier: 1.35
-        plantMetabolism:
-        - !type:PlantAdjustNutrition
-          guidebookIsAttributePositive: True
-          amount: 0.25
-          guidebookAttributeName: plant-attribute-nutrition
-          probability: 1
-          conditions: null
-        - !type:PlantAdjustWater
-          guidebookIsAttributePositive: True
-          amount: 0.7
-          guidebookAttributeName: plant-attribute-water
-          probability: 1
-          conditions: null
-        footstepSound: !type:SoundCollectionSpecifier
-          params:
-            variation: null
-            playOffsetSeconds: 0
-            loop: False
-            referenceDistance: 1
-            rolloffFactor: 1
-            maxDistance: 15
-            pitch: 1
-            volume: 6
-          collection: FootstepWater
-        metamorphicFillBaseName: null
-        id: Sake
-        name: reagent-name-sake
-        group: Drinks
-        parent:
-        - BaseAlcohol
-        abstract: False
-        desc: reagent-desc-sake
-        physicalDesc: reagent-physical-desc-strong-smelling
-        color: '#DDDDDDFF'
-        specificHeat: 1
-        boilingPoint: null
-        meltingPoint: null
-        metamorphicSprite: null
-        metamorphicMaxFillLevels: 0
-        recognizable: False
-      initialDescription: Стакан-метаморф, который автоматически превращается в ёмкость, соответствующую находящемуся в нём напитку. На донышке виден затёртый номер патента.
-    - type: Physics
-      canCollide: False
-    - type: ContainerContainer
-      containers:
-        solution@drink: !type:ContainerSlot
-          ent: 7
-    - type: NameModifier
-      baseName: стакан-метаморф
 - proto: DrinkShakeEmpty
   entities:
   - uid: 21430
@@ -250562,15 +250440,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: MagazineCaselessRifleShortPractice
-  entities:
-  - uid: 14169
-    components:
-    - type: Transform
-      parent: 14160
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: MagazineGrenadeFlash
   entities:
   - uid: 36158
@@ -250578,37 +250447,6 @@ entities:
     - type: Transform
       pos: 117.930725,154.69363
       parent: 2
-- proto: MagazineLightRifleMaxim
-  entities:
-  - uid: 36159
-    components:
-    - type: MetaData
-      name: тяжёлый блин
-    - type: Transform
-      pos: 98.69076,102.736755
-      parent: 2
-    missingComponents:
-    - BallisticAmmoProvider
-    - Contraband
-  - uid: 36160
-    components:
-    - type: MetaData
-      name: тяжёлый блин
-    - type: Transform
-      pos: 98.47201,102.549255
-      parent: 2
-    missingComponents:
-    - BallisticAmmoProvider
-    - Contraband
-- proto: MagazineMagnumSubMachineGunPractice
-  entities:
-  - uid: 14170
-    components:
-    - type: Transform
-      parent: 14160
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: MagazinePistolCaselessRiflePractice
   entities:
   - uid: 36161
@@ -264847,7 +264685,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -181732.47
+      secondsUntilStateChange: -181769.06
       state: Opening
     - type: Airlock
       autoClose: False
@@ -265116,12 +264954,6 @@ entities:
     - type: Transform
       pos: 103.77754,58.235294
       parent: 2
-    - type: ContainerContainer
-      containers:
-        stash: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 6
 - proto: PlushieSharkGrey
   entities:
   - uid: 36929
@@ -298762,7 +298594,7 @@ entities:
       setupAvailableNetworks:
       - SurveillanceCameraSecurity
       nameSet: True
-      id: Одиночная генпоп
+      id: Одиночная общий блок
   - uid: 42121
     components:
     - type: Transform
@@ -298772,7 +298604,7 @@ entities:
       setupAvailableNetworks:
       - SurveillanceCameraSecurity
       nameSet: True
-      id: Предгенпоп
+      id: Общий блок вход
   - uid: 42122
     components:
     - type: Transform
@@ -298783,7 +298615,7 @@ entities:
       setupAvailableNetworks:
       - SurveillanceCameraSecurity
       nameSet: True
-      id: Генпоп
+      id: Общий блок
   - uid: 42123
     components:
     - type: Transform
