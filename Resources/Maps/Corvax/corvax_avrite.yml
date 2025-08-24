@@ -55216,7 +55216,7 @@ entities:
                                         ● О шаттлах Avrite
         ●
 
-        Патрульный шаттл ASSS MK-738 и боевой шаттл ASSS Hole MK-545, используемые станцией Avrite являются гордостью учёных и инженеров NanoTrasen. Всё потому, что данные шаттлы оборудованы Продвинутой системой пилотирования типа ACE. 
+        Патрульный шаттл ASSS MK-738 и боевой шаттл ASSS Hole MK-545, используемые станцией Avrite являются гордостью учёных и инженеров NanoTrasen. Всё потому, что данные шаттлы оборудованы Продвинутой системой пилотирования типа ACE.
 
                           ● Управление с технологией ACE
         ●
@@ -56023,18 +56023,6 @@ entities:
     components:
     - type: Transform
       pos: -76.5,-45.5
-      parent: 2
-- proto: BorgBeaker
-  entities:
-  - uid: 2512
-    components:
-    - type: Transform
-      pos: -26.850365,-29.40819
-      parent: 2
-  - uid: 2513
-    components:
-    - type: Transform
-      pos: -26.86599,-29.236315
       parent: 2
 - proto: BorgCharger
   entities:
