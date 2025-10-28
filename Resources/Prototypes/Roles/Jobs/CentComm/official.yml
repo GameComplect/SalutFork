@@ -6,18 +6,18 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Engineering
-      time: 36000 #20 hrs # Corvax-RoleTime
+      time: 20h #20 hrs # Corvax-RoleTime
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 36000 #20 hrs # Corvax-RoleTime
+      time: 20h #20 hrs # Corvax-RoleTime
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 36000 #20 hrs # Corvax-RoleTime
+      time: 20h #20 hrs # Corvax-RoleTime
     - !type:DepartmentTimeRequirement
       department: Command
-      time: 18000 # 15 hours
+      time: 15h # 15 hours
     - !type:OverallPlaytimeRequirement
-      time: 72000 #140 hrs # Corvax-RoleTime
+      time: 140h #140 hrs # Corvax-RoleTime
 #  setPreference: false
   startingGear: CentcomGear
   icon: "JobIconNanotrasen"
