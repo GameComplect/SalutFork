@@ -8,15 +8,13 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobChemist
-      time: 7200 #5 hrs # Corvax-RoleTime
-    - !type:RoleTimeRequirement
-      role: JobMedicalDoctor
-      time: 10800 #6 hrs
+      time: 5h # Corvax-RoleTime 2.5h
+#    - !type:RoleTimeRequirement
+#      role: JobMedicalDoctor
+#      time: 5h
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 18000 #15 hrs # Corvax-RoleTime
-    - !type:OverallPlaytimeRequirement
-      time: 36000 #40 hrs
+      time: 15h # Corvax-RoleTime 10h
 #    - !type:OverallPlaytimeRequirement
 #      time: 144000 #40 hrs
     - !type:TraitsRequirement #Corvax-TraitsRequirement

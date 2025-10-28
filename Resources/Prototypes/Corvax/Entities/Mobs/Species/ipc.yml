@@ -5,6 +5,7 @@
   id: BaseMobIpc
   abstract: true
   components:
+  - type: Crawler
   - type: HumanoidAppearance
     species: Ipc
   - type: Icon
@@ -267,7 +268,7 @@
     - reagents: [Water, SpaceCleaner]
       methods: [Touch]
       effects:
-      - !type:WashCreamPieReaction
+      - !type:WashCreamPie
   - type: StatusEffects
     allowed:
     - Stun
