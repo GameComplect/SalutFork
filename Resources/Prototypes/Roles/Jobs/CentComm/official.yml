@@ -1,7 +1,7 @@
 - type: job
   id: CentralCommandOfficial
-  name: job-name-centcomoff
-  description: job-description-centcomoff
+  name: job-name-centcommoff
+  description: job-description-centcommoff
   playTimeTracker: JobCentralCommandOfficial
   requirements:
     - !type:DepartmentTimeRequirement
@@ -18,8 +18,8 @@
       time: 15h # 15 hours
     - !type:OverallPlaytimeRequirement
       time: 140h #140 hrs # Corvax-RoleTime
-#  setPreference: false
-  startingGear: CentcomGear
+  #setPreference: false
+  startingGear: CentcommGear
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-centcom # Corvax-JobSupervisors
   canBeAntag: false
@@ -32,7 +32,7 @@
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
-  id: CentcomGear
+  id: CentcommGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitCentcomOfficial
     shoes: ClothingShoesBootsCombatFilled
