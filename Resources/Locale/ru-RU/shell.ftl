@@ -12,19 +12,20 @@ shell-only-players-can-run-this-command = Только игроки могут �
 shell-must-be-attached-to-entity = Для выполнения этой команды вы должны быть прикреплены к сущности.
 shell-must-have-body = У вас должно быть тело, чтобы выполнить эту команду.
 
+shell-unknown-error = Произошла неизвестная ошибка.
+
 ## Arguments
 
 shell-need-exactly-one-argument = Нужен ровно один аргумент.
-shell-wrong-arguments-number-need-specific =
-    Нужно { $properAmount } { $properAmount ->
-        [one] аргумент
-        [few] аргумента
-       *[other] аргументов
-    }, было { $currentAmount } { $currentAmount ->
-        [one] аргумент
-        [few] аргумента
-       *[other] аргументов
-    }.
+shell-wrong-arguments-number-need-specific = Нужно { $properAmount } { $properAmount ->
+    [one] аргумент
+    [few] аргумента
+    *[other] аргументов
+}, было { $currentAmount } { $currentAmount ->
+    [one] аргумент
+    [few] аргумента
+    *[other] аргументов
+}.
 shell-argument-must-be-number = Аргумент должен быть числом.
 shell-argument-must-be-boolean = Аргумент должен быть boolean.
 shell-wrong-arguments-number = Неправильное количество аргументов.

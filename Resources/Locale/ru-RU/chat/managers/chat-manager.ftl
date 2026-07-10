@@ -21,7 +21,7 @@ chat-manager-whisper-headset-on-message = Вы не можете шептать 
 chat-manager-server-wrap-message = [bold]{ $message }[/bold]
 chat-manager-sender-announcement = Центральное командование
 chat-manager-sender-announcement-wrap-message = [font size=14][bold]Объявление { $sender }:[/font][font size=12]
-    { $message }[/bold][/font]
+                                                { $message }[/bold][/font]
 chat-manager-entity-say-wrap-message = [BubbleHeader][bold][Name]{ $entityName }[/Name][/bold][/BubbleHeader] { $verb }, [font={ $fontType } size={ $fontSize } ]"[BubbleContent]{ $message }[/BubbleContent]"[/font]
 chat-manager-entity-say-bold-wrap-message = [BubbleHeader][bold][Name]{ $entityName }[/Name][/bold][/BubbleHeader] { $verb }, [font={ $fontType } size={ $fontSize }]"[BubbleContent][bold]{ $message }[/bold][/BubbleContent]"[/font]
 
@@ -120,6 +120,10 @@ chat-speech-verb-name-goat = Коза
 chat-speech-verb-goat-1 = блеет
 chat-speech-verb-goat-2 = кряхтит
 chat-speech-verb-goat-3 = кричит
+
+chat-speech-verb-name-sheep = Овца
+chat-speech-verb-sheep-1 = блеет
+chat-speech-verb-sheep-2 = фыркает
 
 chat-speech-verb-name-small-mob = Мышь
 chat-speech-verb-small-mob-1 = скрипит
